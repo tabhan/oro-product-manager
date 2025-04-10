@@ -1,0 +1,5 @@
+oro:
+  base_url: "https://local.aaxisdev.net"
+  client_id: "LOrjCIHh5thb8_xluVwy7vR9aZH-fXvx"
+  client_secret: "IoM3sfcgELTuB03vG5_EXElIdoz8nRvhCR8MSF0d-gpTcVGUdpK0O26ggsovsNwfpIOeppL_Gr8SGGx4duONj3"
+  admin_path: "admin" 

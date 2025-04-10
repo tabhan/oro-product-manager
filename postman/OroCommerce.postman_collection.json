@@ -1,0 +1,914 @@
+{
+	"info": {
+		"_postman_id": "9b75b45f-3d53-43cb-b15d-71f7f1ee3d7a",
+		"name": "OroCommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1077672"
+	},
+	"item": [
+		{
+			"name": "Names",
+			"item": [
+				{
+					"name": "Product Names",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products/1/names",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products",
+								"1",
+								"names"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Names",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"string\": \"220 Lumen Rechargeable Headlamp -- French\",\r\n    \"fallback\": null,\r\n    \"product\": 1,\r\n    \"localization\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productnames",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productnames"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Names",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"string\": \"220 Lumen Rechargeable Headlamp -- French\",\r\n    \"fallback\": null,\r\n    \"product\": 1,\r\n    \"localization\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productnames/65",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productnames",
+								"65"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Short Descriptions",
+			"item": [
+				{
+					"name": "Product Shot Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products/1/shortDescriptions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products",
+								"1",
+								"shortDescriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Shot Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"text\": \"<p>French</p>\",\r\n        \"fallback\": null,\r\n        \"product\": 1,\r\n        \"localization\": 6\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productshortdescriptions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productshortdescriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Shot Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"<p>French</p>\",\r\n    \"fallback\": null,\r\n    \"product\": 1,\r\n    \"localization\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productshortdescriptions/70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productshortdescriptions",
+								"70"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Descriptions",
+			"item": [
+				{
+					"name": "Product Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products/1/descriptions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products",
+								"1",
+								"descriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fallback\": null,\r\n    \"product\": 1,\r\n    \"localization\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productdescriptions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productdescriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Shot Descriptions",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fallback\": null,\r\n    \"product\": 1,\r\n    \"localization\": 6,\r\n    \"wysiwygStyle\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/productdescriptions/65",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"productdescriptions",
+								"65"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Product",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products?filter[sku]=10006",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "filter[sku]",
+									"value": "10006"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"type\": \"products\",\r\n        \"id\": \"7\",\r\n        \"attributes\": {\r\n            \"sku\": \"abc\",\r\n            \"status\": \"enabled\",\r\n            \"productType\": \"simple\",\r\n            \"featured\": true,\r\n            \"newArrival\": true\r\n        },\r\n        \"relationships\": {\r\n            \"owner\": {\r\n                \"data\": {\r\n                    \"type\": \"businessunits\",\r\n                    \"id\": \"1\"\r\n                }\r\n            },\r\n            \"organization\": {\r\n                \"data\": {\r\n                    \"type\": \"organizations\",\r\n                    \"id\": \"1\"\r\n                }\r\n            },\r\n            \"names\": {\r\n                \"data\": [\r\n                    {\r\n                        \"type\": \"productnames\",\r\n                        \"id\": \"14\"\r\n                    }\r\n                ]\r\n            },\r\n            \"inventory_status\": {\r\n                \"data\": {\r\n                    \"type\": \"prodinventorystatuses\",\r\n                    \"id\": \"in_stock\"\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"included\": [\r\n        {\r\n            \"meta\": {\r\n                \"update\": true\r\n            },\r\n            \"type\": \"productnames\",\r\n            \"id\": \"14\",\r\n            \"attributes\": {\r\n                \"fallback\": null,\r\n                \"string\": \"Test product 123\"\r\n            },\r\n            \"relationships\": {\r\n                \"product\": {\r\n                    \"links\": {\r\n                        \"self\": \"https://local.aaxisdev.net/admin/api/productnames/14/relationships/product\",\r\n                        \"related\": \"https://local.aaxisdev.net/admin/api/productnames/14/product\"\r\n                    },\r\n                    \"data\": {\r\n                        \"type\": \"products\",\r\n                        \"id\": \"7\"\r\n                    }\r\n                },\r\n                \"localization\": {\r\n                    \"links\": {\r\n                        \"self\": \"https://local.aaxisdev.net/admin/api/productnames/14/relationships/localization\",\r\n                        \"related\": \"https://local.aaxisdev.net/admin/api/productnames/14/localization\"\r\n                    },\r\n                    \"data\": null\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{base_url}}/oauth2-token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "OroCommerce",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"type\": \"products\",\r\n    \"attributes\": {\r\n      \"sku\": \"abc\",\r\n      \"status\": \"enabled\",\r\n      \"productType\": \"simple\",\r\n      \"featured\": true,\r\n      \"newArrival\": true\r\n    },\r\n    \"relationships\": {\r\n      \"owner\": {\r\n        \"data\": {\r\n          \"type\": \"businessunits\",\r\n          \"id\": \"1\"\r\n        }\r\n      },\r\n      \"organization\": {\r\n        \"data\": {\r\n          \"type\": \"organizations\",\r\n          \"id\": \"1\"\r\n        }\r\n      },\r\n      \"names\": {\r\n        \"data\": [\r\n          {\r\n            \"type\": \"productnames\",\r\n            \"id\": \"names-1\"\r\n          }\r\n        ]\r\n      },\r\n      \"attributeFamily\": {\r\n        \"data\": {\r\n          \"type\": \"attributefamilies\",\r\n          \"id\": \"1\"\r\n        }\r\n      },\r\n      \"primaryUnitPrecision\": {\r\n        \"data\": {\r\n            \"type\": \"productunitprecisions\",\r\n            \"id\": \"product-unit-precision-id-1\"\r\n        }\r\n      },\r\n      \"unitPrecisions\": {\r\n        \"data\": [\r\n          {\r\n            \"type\": \"productunitprecisions\",\r\n            \"id\": \"product-unit-precision-id-1\"\r\n          }\r\n        ]\r\n      },\r\n      \"inventory_status\": {\r\n        \"data\": {\r\n          \"type\": \"prodinventorystatuses\",\r\n          \"id\": \"in_stock\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"included\": [\r\n    {\r\n      \"type\": \"productnames\",\r\n      \"id\": \"names-1\",\r\n      \"attributes\": {\r\n        \"fallback\": null,\r\n        \"string\": \"Test product\"\r\n      },\r\n      \"relationships\": {\r\n        \"localization\": {\r\n          \"data\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"type\": \"productunitprecisions\",\r\n      \"id\": \"product-unit-precision-id-1\",\r\n      \"attributes\": {\r\n          \"precision\": \"0\",\r\n          \"conversionRate\": \"5\",\r\n          \"sell\": \"1\"\r\n      },\r\n      \"relationships\": {\r\n        \"unit\": {\r\n          \"data\": {\r\n            \"type\": \"productunits\",\r\n            \"id\": \"item\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{admin_path}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{admin_path}}",
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Localizations",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessTokenUrl",
+							"value": "{{base_url}}/oauth2-token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "OroCommerce",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{admin_path}}/api/localizations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{admin_path}}",
+						"api",
+						"localizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{base_url}}/oauth2-token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "OroCommerce",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{admin_path}}/api/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{admin_path}}",
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
