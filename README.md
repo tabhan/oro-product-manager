@@ -1,91 +1,49 @@
 # Oro Product Manager
 
-A Python command-line tool for managing products in OroCommerce/OroCRM through their REST API.
+A simple Python script to create or update products in OroCommerce.
 
-## Features
+## Setup
 
-- Create new products in Oro
-- Update existing products
-- Support for required and optional product attributes
-- OAuth2 authentication
-- YAML configuration support
-
-## Requirements
-
-- Python 3.6+
-- Required Python packages:
-  - requests
-  - pyyaml
-  - dataclasses (Python 3.7+)
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone git@github.com:tabhan/oro-product-manager.git
-cd oro-product-manager
-```
-
-2. Install the required packages:
+1. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Configuration
-
-Create a `config.yaml` file in the project root with the following structure:
-
-```yaml
-oro:
-  base_url: "https://your-oro-instance.com"
-  client_id: "your_client_id"
-  client_secret: "your_client_secret"
-  admin_path: "admin"  # or your custom admin path
+2. Create a `.env` file with your Oro credentials:
+```bash
+ORO_BASE_URL=https://your-oro-instance.com
+ORO_CLIENT_ID=your_client_id
+ORO_CLIENT_SECRET=your_client_secret
+ORO_ADMIN_PATH=admin
 ```
 
 ## Usage
 
-The script can be run with the following command-line arguments:
+Create or update a product:
+```bash
+python oro_product.py --sku "PRODUCT-SKU" --name "Product Name" [--unit "unit_code"] [--inventory-status "status"]
+```
 
-### Required Arguments:
-- `--sku`: Product SKU (Stock Keeping Unit)
+### Required Parameters
+- `--sku`: Product SKU
 - `--name`: Product name
 
-### Optional Arguments:
-- `--unit`: Product unit code
-- `--inventory-status`: Inventory status (e.g., "in_stock", "out_of_stock")
-- `--config`: Path to configuration file (default: config.yaml)
-
-### Examples
-
-Create a new product:
-```bash
-python oro_product.py --sku "PROD001" --name "Test Product" --unit "item" --inventory-status "in_stock"
-```
-
-Update an existing product:
-```bash
-python oro_product.py --sku "PROD001" --name "Updated Product Name"
-```
+### Optional Parameters
+- `--unit`: Product unit code (default: "item")
+- `--inventory-status`: Inventory status (default: "in_stock")
 
 ## Testing
 
-After creating or updating a product, you can verify the changes using curl:
-
+Verify product creation/update:
 ```bash
-curl -X GET "https://your-oro-instance.com/admin/api/products?filter[sku]=PROD001" \
-     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-     -H "Content-Type: application/vnd.api+json"
+curl -X GET "https://your-oro-instance.com/api/products/PRODUCT-SKU" \
+-H "Authorization: Bearer $(curl -s https://your-oro-instance.com/oauth2-token \
+-d 'client_id=your_client_id' \
+-d 'client_secret=your_client_secret' \
+-d 'grant_type=client_credentials' | jq -r '.access_token')"
 ```
 
-## License
+## Security
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request 
+- Keep your `.env` file secure
+- Never commit sensitive credentials to version control 

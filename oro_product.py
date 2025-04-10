@@ -1,21 +1,64 @@
 #!/usr/bin/env python3
 
+"""
+Oro Product Manager
+A script to create or update products in OroCommerce using their REST API.
+This script handles authentication, product creation, and updates through the Oro API.
+"""
+
 import argparse
-import yaml
+import os
 import requests
 import sys
 from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 
+def load_env_file(env_file='.env'):
+    """
+    Load environment variables from .env file.
+    
+    Args:
+        env_file (str): Path to the .env file
+        
+    Raises:
+        SystemExit: If there's an error loading the .env file
+    """
+    try:
+        with open(env_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    key, value = line.split('=', 1)
+                    os.environ[key.strip()] = value.strip().strip('"\'')
+    except FileNotFoundError:
+        print(f"Warning: {env_file} file not found. Using system environment variables.")
+    except Exception as e:
+        print(f"Error loading {env_file}: {e}")
+        sys.exit(1)
+
 @dataclass
 class Product:
+    """
+    Data class representing a product in OroCommerce.
+    
+    Attributes:
+        sku (str): Product SKU (Stock Keeping Unit)
+        name (str): Product name
+        unit (Optional[str]): Product unit code (default: "item")
+        inventory_status (Optional[str]): Inventory status (default: "in_stock")
+    """
     sku: str
     name: str
-    unit: Optional[str] = None
-    inventory_status: Optional[str] = None
+    unit: Optional[str] = "item"
+    inventory_status: Optional[str] = "in_stock"
 
     def to_api_data(self) -> Dict[str, Any]:
-        """Convert Product instance to API request data format."""
+        """
+        Convert Product instance to API request data format.
+        
+        Returns:
+            Dict[str, Any]: Formatted data ready for API request
+        """
         data = {
             "data": {
                 "type": "products",
@@ -56,7 +99,7 @@ class Product:
                     "inventory_status": {
                         "data": {
                             "type": "prodinventorystatuses",
-                            "id": self.inventory_status or "in_stock"
+                            "id": self.inventory_status
                         }
                     }
                 }
@@ -115,17 +158,46 @@ class Product:
         return data
 
 class OroProductManager:
-    def __init__(self, config_path: str):
-        with open(config_path, 'r') as f:
-            config = yaml.safe_load(f)
-            self.base_url = config['oro']['base_url']
-            self.client_id = config['oro']['client_id']
-            self.client_secret = config['oro']['client_secret']
-            self.admin_path = config['oro']['admin_path']
-            self.token = None
+    """
+    Manager class for handling OroCommerce product operations.
+    
+    This class handles authentication, product retrieval, creation, and updates
+    through the OroCommerce REST API.
+    """
+    
+    def __init__(self):
+        """
+        Initialize OroProductManager with environment variables.
+        
+        Raises:
+            SystemExit: If required environment variables are missing
+        """
+        # Load environment variables from .env file
+        load_env_file()
+        
+        # Read environment variables
+        self.base_url = os.environ.get('ORO_BASE_URL')
+        self.client_id = os.environ.get('ORO_CLIENT_ID')
+        self.client_secret = os.environ.get('ORO_CLIENT_SECRET')
+        self.admin_path = os.environ.get('ORO_ADMIN_PATH')
+        self.token = None
+
+        # Validate required environment variables
+        if not all([self.base_url, self.client_id, self.client_secret, self.admin_path]):
+            print("Error: Missing required environment variables. Please ensure ORO_BASE_URL, ORO_CLIENT_ID, ORO_CLIENT_SECRET, and ORO_ADMIN_PATH are set.")
+            print("You can set these in the .env file or as system environment variables.")
+            sys.exit(1)
 
     def get_access_token(self) -> str:
-        """Get OAuth2 access token from Oro."""
+        """
+        Get OAuth2 access token from OroCommerce.
+        
+        Returns:
+            str: Access token for API authentication
+            
+        Raises:
+            SystemExit: If token retrieval fails
+        """
         if self.token:
             return self.token
 
@@ -143,10 +215,19 @@ class OroProductManager:
             return self.token
         except requests.exceptions.RequestException as e:
             print(f"Error getting access token: {e}")
+            print(f"Please check your Oro configuration in .env file:")
+            print(f"ORO_BASE_URL: {self.base_url}")
+            print(f"ORO_CLIENT_ID: {self.client_id}")
+            print(f"ORO_CLIENT_SECRET: {self.client_secret}")
             sys.exit(1)
 
     def get_headers(self) -> Dict[str, str]:
-        """Get headers with authentication token."""
+        """
+        Get headers with authentication token for API requests.
+        
+        Returns:
+            Dict[str, str]: Headers including authorization token
+        """
         token = self.get_access_token()
         return {
             "Authorization": f"Bearer {token}",
@@ -155,7 +236,15 @@ class OroProductManager:
         }
 
     def get_product_by_sku(self, sku: str) -> Optional[Dict[str, Any]]:
-        """Get product by SKU if it exists."""
+        """
+        Get product by SKU if it exists.
+        
+        Args:
+            sku (str): Product SKU to search for
+            
+        Returns:
+            Optional[Dict[str, Any]]: Product data if found, None otherwise
+        """
         product_url = f"{self.base_url}/{self.admin_path}/api/products"
         search_url = f"{product_url}?filter[sku]={sku}"
         
@@ -171,7 +260,18 @@ class OroProductManager:
             return None
 
     def create_or_update_product(self, product: Product) -> Dict[str, Any]:
-        """Create or update a product based on whether it exists."""
+        """
+        Create or update a product based on whether it exists.
+        
+        Args:
+            product (Product): Product instance to create or update
+            
+        Returns:
+            Dict[str, Any]: API response data
+            
+        Raises:
+            SystemExit: If API request fails
+        """
         existing_product = self.get_product_by_sku(product.sku)
         if existing_product:
             # Update existing product
@@ -210,12 +310,20 @@ class OroProductManager:
             sys.exit(1)
 
 def main():
+    """
+    Main function to parse command line arguments and execute product operations.
+    
+    Command line arguments:
+        --sku: Product SKU (required)
+        --name: Product name (required)
+        --unit: Product unit code (optional, default: item)
+        --inventory-status: Inventory status (optional, default: in_stock)
+    """
     parser = argparse.ArgumentParser(description='Create or update a product in Oro')
-    parser.add_argument('--config', default='config.yaml', help='Path to configuration file')
     parser.add_argument('--sku', required=True, help='Product SKU')
     parser.add_argument('--name', required=True, help='Product name')
-    parser.add_argument('--unit', help='Product unit code')
-    parser.add_argument('--inventory-status', help='Inventory status')
+    parser.add_argument('--unit', default='item', help='Product unit code (default: item)')
+    parser.add_argument('--inventory-status', default='in_stock', help='Inventory status (default: in_stock)')
 
     args = parser.parse_args()
 
@@ -228,12 +336,35 @@ def main():
             inventory_status=args.inventory_status
         )
 
-        manager = OroProductManager(args.config)
+        # Initialize OroProductManager and create/update product
+        manager = OroProductManager()
         result = manager.create_or_update_product(product)
-        print("Product operation successful:")
-        print(result)
+        
+        if 'data' in result and 'id' in result['data']:
+            print("\nProduct Operation Successful!")
+            print("=" * 50)
+            print(f"Product ID: {result['data']['id']}")
+            print(f"Product SKU: {result['data']['attributes']['sku']}")
+            
+            # Get the product name from the included data
+            for included in result.get('included', []):
+                if included['type'] == 'productnames':
+                    print(f"Product Name: {included['attributes']['string']}")
+                    break
+            
+            print("=" * 50)
+        else:
+            print("\nError: Unexpected response format from server")
+            print("Response data:", result)
+            sys.exit(1)
+        
     except Exception as e:
-        print(f"Error: {e}")
+        print("\nError occurred while processing the request:")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        if hasattr(e, 'response') and e.response is not None:
+            print("\nServer response:")
+            print(e.response.text)
         sys.exit(1)
 
 if __name__ == "__main__":
